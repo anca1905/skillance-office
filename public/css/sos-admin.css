@@ -1,0 +1,193 @@
+/* public/css/sos-admin.css */
+
+:root {
+    --bs-font-sans-serif: 'Inter', sans-serif;
+    --corporate-navy: #0d2e5c;
+    --corporate-gold: #c49a02;
+    --bg-light-gray: #f4f6f9;
+    --sidebar-width: 260px;
+    --topbar-height: 70px;
+}
+
+body {
+    background-color: var(--bg-light-gray);
+    font-family: var(--bs-font-sans-serif);
+    font-size: 0.9rem;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--corporate-navy);
+    color: #fff;
+    z-index: 1000;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    /* Animasi halus */
+}
+
+.sidebar-brand {
+    padding: 1.5rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.8rem 1.5rem;
+    border-left: 4px solid transparent;
+    transition: all 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left-color: var(--corporate-gold);
+}
+
+.nav-link i {
+    width: 25px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+/* --- MAIN CONTENT --- */
+/* public/css/sos-admin.css */
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    /* UBAH BARIS INI: Tambahkan kalkulasi jarak ekstra (+ 20px) */
+    padding-top: calc(var(--topbar-height) + 20px);
+    padding-bottom: 2rem;
+    /* Tambahan agar bagian bawah tidak mepet */
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- TOPBAR --- */
+.topbar {
+    height: var(--topbar-height);
+    background: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: var(--sidebar-width);
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- UTILITIES --- */
+.text-navy {
+    color: var(--corporate-navy);
+}
+
+.text-gold {
+    color: var(--corporate-gold);
+}
+
+.bg-navy {
+    background-color: var(--corporate-navy);
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 2px solid #eee;
+    font-weight: 600;
+    padding: 1rem 1.5rem;
+}
+
+/* --- RESPONSIVE LOGIC (MOBILE) --- */
+@media (max-width: 991.98px) {
+
+    /* Sembunyikan Sidebar ke kiri layar */
+    .sidebar {
+        left: calc(var(--sidebar-width) * -1);
+    }
+
+    /* Jika kelas 'show' ditambahkan via JS, munculkan sidebar */
+    .sidebar.show {
+        left: 0;
+    }
+
+    /* Konten & Topbar jadi Full Width */
+    .main-content {
+        margin-left: 0;
+    }
+
+    .topbar {
+        left: 0;
+        padding: 0 1rem;
+        /* Padding lebih kecil di HP */
+    }
+
+    /* Overlay hitam transparan saat menu terbuka di HP */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+    }
+}
+
+/* Efek Kedip Halus untuk Badge Critical */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.blink-badge {
+    animation: blink 2s infinite;
+}
+
+/* --- BUTTON STYLING --- */
+.btn-navy {
+    background-color: var(--corporate-navy);
+    color: #fff;
+    border: 1px solid var(--corporate-navy);
+    transition: all 0.3s;
+}
+
+.btn-navy:hover {
+    background-color: #082042;
+    /* Navy lebih gelap saat di-hover */
+    color: #ffd700;
+    /* Teks jadi emas saat hover */
+    border-color: #082042;
+}
+
+/* Fix agar tombol tidak gepeng di layar kecil */
+.modal-footer {
+    flex-wrap: nowrap;
+}
