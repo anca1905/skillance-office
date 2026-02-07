@@ -38,6 +38,8 @@
 
                         @if ($item->status == 'Development')
                             <small class="badge bg-warning text-dark border">Dev</small>
+                        @elseif($item->status == 'On Hold')
+                            <small class="badge bg-info text-dark border">On Hold</small>
                         @elseif($item->status == 'Testing')
                             <small class="badge bg-info text-dark border">Testing</small>
                         @else
