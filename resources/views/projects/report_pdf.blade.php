@@ -4,6 +4,7 @@
 <head>
     <title>Laporan Sistem - {{ $project->name }}</title>
     <style>
+        /* 1. Reset Margin Kertas jadi 0 agar Cover Full Screen */
         @page {
             margin: 0px;
         }
@@ -15,18 +16,17 @@
             color: #333;
         }
 
-        /* --- COVER PAGE (MODERN STYLE) --- */
+        /* --- COVER PAGE (FULL BLEED) --- */
         .cover {
             width: 100%;
             height: 100%;
             position: relative;
             background-color: #fff;
-            /* Dasar Putih */
             page-break-after: always;
             overflow: hidden;
         }
 
-        /* Hiasan Atas (Orange Bar) */
+        /* Hiasan Atas */
         .cover-top-bar {
             position: absolute;
             top: 0;
@@ -34,7 +34,6 @@
             width: 100%;
             height: 30px;
             background-color: #fca311;
-            /* Warna Emas/Orange */
         }
 
         .cover-top-accent {
@@ -44,13 +43,12 @@
             width: 100px;
             height: 30px;
             background-color: #14213d;
-            /* Warna Navy */
         }
 
-        /* Konten Tengah */
+        /* Konten Cover */
         .cover-content {
             position: absolute;
-            top: 100px;
+            top: 120px;
             width: 100%;
             text-align: center;
             z-index: 10;
@@ -66,7 +64,7 @@
         }
 
         .main-title {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 900;
             line-height: 1;
             text-transform: uppercase;
@@ -76,11 +74,10 @@
         }
 
         .sub-title {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
-            color: #000;
+            color: #555;
             margin-top: 10px;
-            margin-bottom: 5px;
             text-transform: uppercase;
         }
 
@@ -101,16 +98,15 @@
             color: #555;
         }
 
-        /* Gambar Tengah (Hero Image) */
+        /* Gambar Tengah */
         .hero-image {
             position: absolute;
-            top: 400px;
+            top: 420px;
             left: 50%;
             transform: translate(-50%, 0);
             width: 80%;
-            height: 350px;
+            height: 320px;
             background-color: #eee;
-            /* Placeholder warna abu jika gambar tidak ada */
             border: 5px solid #fff;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             z-index: 5;
@@ -118,7 +114,7 @@
             border-radius: 8px;
         }
 
-        /* Hiasan Bawah (Abstract Shapes) */
+        /* Hiasan Bawah */
         .shape-bottom-main {
             position: absolute;
             bottom: 0;
@@ -127,7 +123,6 @@
             height: 250px;
             background-color: #fca311;
             clip-path: polygon(0 40%, 100% 0, 100% 100%, 0% 100%);
-            /* Membuat miring */
             z-index: 1;
         }
 
@@ -142,7 +137,7 @@
             z-index: 2;
         }
 
-        /* Info Kontak di Bawah */
+        /* Info Kontak */
         .contact-info {
             position: absolute;
             bottom: 30px;
@@ -158,9 +153,11 @@
             font-weight: bold;
         }
 
-        /* --- CONTENT PAGES (Sama seperti sebelumnya) --- */
+        /* --- HALAMAN ISI (MARGIN 4433) --- */
         .page {
-            padding: 50px;
+            /* Padding urutan: Top Right Bottom Left */
+            /* 4cm 3cm 3cm 4cm */
+            padding: 4cm 3cm 3cm 4cm;
             page-break-after: always;
             background: white;
         }
@@ -170,55 +167,59 @@
         }
 
         .chapter-title {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             color: #14213d;
             border-bottom: 3px solid #fca311;
             padding-bottom: 10px;
-            margin-bottom: 30px;
-            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-top: 0;
         }
 
         .content-text {
             text-align: justify;
-            line-height: 1.6;
+            line-height: 1.5;
             font-size: 12px;
             margin-bottom: 15px;
         }
 
+        ul.content-text li {
+            margin-bottom: 5px;
+        }
+
+        /* Screenshot Styling */
         .feature-box {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             page-break-inside: avoid;
         }
 
         .feature-title {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             color: #14213d;
             margin-bottom: 10px;
-            padding-left: 10px;
             border-left: 4px solid #fca311;
+            padding-left: 10px;
         }
 
         .img-container {
             text-align: center;
-            background: #f4f4f4;
-            padding: 10px;
             border: 1px solid #ddd;
-            margin-bottom: 15px;
+            padding: 5px;
+            margin-bottom: 10px;
         }
 
         .img-container img {
             max-width: 100%;
-            max-height: 350px;
+            max-height: 300px;
         }
 
         .desc-box {
             background: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
+            padding: 10px;
+            border-radius: 4px;
             font-size: 11px;
-            line-height: 1.5;
+            line-height: 1.4;
             border: 1px solid #eee;
         }
 
@@ -226,9 +227,10 @@
             font-weight: bold;
             color: #14213d;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
+        /* Tanda Tangan */
         .signature-table {
             width: 100%;
             margin-top: 50px;
@@ -237,7 +239,7 @@
 
         .signature-line {
             border-bottom: 1px solid #000;
-            width: 200px;
+            width: 180px;
             margin: 80px auto 5px auto;
         }
     </style>
@@ -251,10 +253,8 @@
 
         <div class="cover-content">
             <div class="logo-text">SKILLANCE TECHNOLOGY</div>
-            <h1 class="main-title">LAPORAN</h1>
-            <h1 class="main-title">SISTEM</h1>
+            <h1 class="main-title">LAPORAN SISTEM</h1>
             <div class="sub-title">{{ $project->name }}</div>
-
             <div class="badge-year">PERIODE {{ date('Y') }}</div>
             <div class="author">Disusun Oleh: Skillance Team</div>
         </div>
@@ -263,8 +263,8 @@
             <img src="{{ public_path('storage/' . $project->cover_image) }}" class="hero-image">
         @else
             <div class="hero-image"
-                style="background-color: #eee; display: flex; align-items: center; justify-content: center; color: #aaa;">
-                <span>No Cover Image</span>
+                style="display:flex; align-items:center; justify-content:center; color:#aaa; font-weight:bold;">
+                NO COVER IMAGE
             </div>
         @endif
 
@@ -288,18 +288,16 @@
         </p>
         <p class="content-text">
             Sistem ini dibangun menggunakan teknologi berbasis web terkini yang menjamin keamanan data, kecepatan akses,
-            dan kemudahan penggunaan (user-friendly) bagi administrator maupun pengguna umum.
+            dan kemudahan penggunaan (user-friendly).
         </p>
 
-        <div class="chapter-title">BAB II: ALUR SISTEM</div>
-        <p class="content-text">
-            Secara umum, alur kerja sistem ini dirancang sesederhana mungkin untuk meminimalisir kesalahan pengguna:
-        </p>
-        <ul class="content-text">
-            <li><strong>Login:</strong> Pengguna masuk menggunakan kredensial yang valid.</li>
-            <li><strong>Input Data:</strong> Pengguna memasukkan data melalui form yang disediakan.</li>
-            <li><strong>Pemrosesan:</strong> Sistem memproses data secara otomatis.</li>
-            <li><strong>Output:</strong> Sistem menghasilkan laporan atau visualisasi data pada dashboard.</li>
+        <div class="chapter-title" style="margin-top: 40px;">BAB II: ALUR SISTEM</div>
+        <p class="content-text">Secara umum, alur kerja sistem ini dirancang sesederhana mungkin:</p>
+        <ul class="content-text" style="padding-left: 20px;">
+            <li><strong>Login:</strong> Akses menggunakan akun petugas/admin.</li>
+            <li><strong>Input Data:</strong> Memasukkan data pasien/transaksi melalui form.</li>
+            <li><strong>Pemrosesan:</strong> Sistem memvalidasi dan menyimpan data.</li>
+            <li><strong>Laporan:</strong> Mencetak hasil output atau melihat grafik statistik.</li>
         </ul>
     </div>
 
@@ -313,7 +311,7 @@
                     <img src="{{ public_path('storage/' . $doc->image_path) }}">
                 </div>
                 <div class="desc-box">
-                    <span class="desc-label">Keterangan & Cara Kerja:</span>
+                    <span class="desc-label">Keterangan:</span>
                     {!! nl2br(e($doc->description)) !!}
                 </div>
             </div>
@@ -324,27 +322,26 @@
         <div class="chapter-title">BAB IV: PENUTUP</div>
         <p class="content-text">
             Demikian laporan implementasi dan panduan pengguna ini dibuat. Kami berharap sistem ini dapat memberikan
-            manfaat maksimal bagi instansi/pengguna. Dukungan teknis akan tetap diberikan sesuai dengan kesepakatan
-            pemeliharaan sistem.
+            manfaat maksimal bagi instansi. Dukungan teknis akan tetap diberikan sesuai kesepakatan.
         </p>
 
-        <div style="margin-top: 100px; border: 2px solid #14213d; padding: 30px;">
-            <h3 style="text-align: center; margin: 0 0 20px 0; color: #14213d;">BERITA ACARA SERAH TERIMA (BAST)</h3>
-            <p class="content-text" style="text-align: center;">
-                Dengan ini menyatakan bahwa sistem telah diterima dengan baik, diuji coba, dan berfungsi sesuai
-                spesifikasi yang disepakati.
+        <div style="margin-top: 80px; border: 2px solid #14213d; padding: 20px;">
+            <h3 style="text-align: center; margin: 0 0 10px 0; color: #14213d; font-size: 16px;">BERITA ACARA SERAH
+                TERIMA</h3>
+            <p class="content-text" style="text-align: center; margin-bottom: 0;">
+                Sistem telah diterima dengan baik, diuji coba, dan berfungsi sesuai spesifikasi.
             </p>
 
             <table class="signature-table">
                 <tr>
                     <td>
-                        <p>Diserahkan Oleh,</p>
+                        <p style="font-size: 12px;">Diserahkan Oleh,</p>
                         <strong>CEO Skillance</strong>
                         <div class="signature-line"></div>
                         <strong>Arsyad</strong>
                     </td>
                     <td>
-                        <p>Diterima Oleh,</p>
+                        <p style="font-size: 12px;">Diterima Oleh,</p>
                         <strong>Klien / Perwakilan</strong>
                         <div class="signature-line"></div>
                         <strong>{{ $project->client_name }}</strong>
